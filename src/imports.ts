@@ -27,7 +27,7 @@ export function resolveImport(name: string, cwd: string): string | undefined
 export function resolveImport(
   name: string,
   cwd: string,
-  throwOnMissing: true
+  throwOnMissing: boolean
 ): string
 export function resolveImport(
   name: string,
@@ -60,7 +60,7 @@ export type NamedImports = {
 }
 
 export function inferNamedImports(root: string): NamedImports {
-  return resolveImport('preact', root)
+  return resolveImport('preact', root, false)
     ? { preact: ['h'], '@mdx-js/preact': ['mdx'] }
     : { react: 'React', '@mdx-js/react': ['mdx'] }
 }
